@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="stylesheet" type="text/css" href="css/Perfecto.css"></link>
+    <head>
+        <title>Stok Takibi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body >
+        <div class="limiter"> 
+        <center><p><h1 class="index-baslik">Stok Takibi</h1></p></center>
+        <center>
+        <h:form class="bolum">
+            <h:outputText class="edittext3" value="Kullanıcı: #{kullanici.kullaniciGetir()}"></h:outputText><br/>
+            <h:outputText class="edittext3" value="Çalıştığı Depo: #{kuldep.depoGetir(kullanici.idGetir())}"></h:outputText>
+            <table>
+                <tr>
+                    <td><h:commandButton class="index-button" value="Depodaki Ürünler" action="adetliste?faces-redirect=true"></h:commandButton></td>
+                    <td><h:commandButton class="index-button" value="Yeni Gelen Ürünü Ekle" action="yeniurun?faces-redirect=true"></h:commandButton></td>
+                </tr>
+                <tr>
+                    <td><h:commandButton class="index-button" value="Satış Belgesi Oluştur" action="satis?faces-redirect=true"></h:commandButton></td>
+                    <td><h:commandButton class="index-button" value="Depo Satış Geçmişi" action="deposatisgecmis?faces-redirect=true"></h:commandButton></td>
+                </tr>
+            </table>
+            <h:commandButton value="Çıkış Yap" class="index-button" action="#{kullanici.logout()}"></h:commandButton>
+        </h:form>
+        </center>
+        </div>
+    </body>
+</html>

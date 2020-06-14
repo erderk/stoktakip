@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <link rel="stylesheet" type="text/css" href="css/Perfecto.css"></link>
+    <head>
+        <title>Kaydol</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript">
+            function pencereAc(){
+                alert(document.getElementById('form:kaydoldu').value);
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div class="limiter">
+            <div class="index-baslik">
+                Kayıt Ol
+            </div>
+            <h:form class="index-bolum">
+                <h:inputText class="index-input" a:placeholder="Ad" size="50" value="#{kullanici.ad}" required="true" requiredMessage="Lütfen Adınızı Giriniz"></h:inputText>
+                <br/>
+                <h:inputText class="index-input" a:placeholder="Soyad" size="50" value="#{kullanici.soyad}" required="true" requiredMessage="Lütfen Soyadınızı Giriniz"></h:inputText>
+                <br/>
+                <h:inputText class="index-input" a:placeholder="E-Posta" size="50" value="#{kullanici.eposta}" required="true" requiredMessage="Lütfen E-postanızı Giriniz"></h:inputText>
+                <br/>
+                <h:inputSecret  class="index-input" a:placeholder="Şifre" size="50" value="#{kullanici.sifre}" required="true" requiredMessage="Lütfen Şifrenizi Giriniz"></h:inputSecret>
+                <br/>
+                <h:commandButton class="index-button" value="Kaydol" action="#{kullanici.kullaniciKayit()}" onclick="pencereAc()"></h:commandButton>
+                <h:commandButton class="index-button" value="Geri" action="index?faces-redirect=true"></h:commandButton>
+            </h:form>
+            <h:form id="form">
+                <h:inputHidden id="kaydoldu" value="Kayıt Olundu!!"></h:inputHidden>
+            </h:form>
+        </div>
+    </body>
+    
+</html>

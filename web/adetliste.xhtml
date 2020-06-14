@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="stylesheet" type="text/css" href="css/Perfecto.css"></link>
+    <head>
+        <title>Depodaki Ürünler</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript">
+            function pencereAc(){
+                alert(document.getElementById('form:silindi').value);
+            }
+            function pencereAc1(){
+                alert(document.getElementById('form1:guncellendi').value);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="limiter"> 
+        <center>
+            <div><h1 class="index-baslik">Depodaki Ürünler</h1></div>
+        </center>
+        <br/>
+        <br/>
+        <center>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:column>
+                    <div class="depo-bolum">
+                        <h:dataTable class="table" columnClasses="table" headerClass="table" value="#{adet.getAdetListesi(kuldep.depoIdGetir(kullanici.idGetir()))}" var="adetListesi">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{adetListesi.urunid}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Ürün Adı</f:facet>
+                                <h:outputText value="#{adetListesi.urunadi}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Alış Fiyatı(TL)</f:facet>
+                                <h:outputText value="#{adetListesi.alisfiyat}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Satış Fiyatı(TL)</f:facet>
+                                <h:outputText value="#{adetListesi.satisfiyat}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Marka</f:facet>
+                                <h:outputText value="#{adetListesi.marka}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Model</f:facet>
+                                <h:outputText value="#{adetListesi.model}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Açıklama</f:facet>
+                                <h:outputText value="#{adetListesi.aciklama}"></h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Adet</f:facet>
+                                <h:outputText value="#{adetListesi.adet}"></h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                    </h:column>
+                    <h:column>
+                        <div class="depo-bolum2">
+                            <table class='table'>
+                            <tr>
+                                <td><h:outputText class="edittext2" value="İşlem Yapacağınız Ürünün ID'sini Giriniz"></h:outputText><h:inputText value="#{adet.urunid}"></h:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><h:commandButton class="depo-button" value="Sil" actionListener="#{adet.urunSil(kuldep.depoIdGetir(kullanici.idGetir()))}" onclick="pencereAc()"></h:commandButton></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputText class="edittext2" value="Adet:"></h:outputText><h:inputText class="edittext2" value="#{adet.adet}"></h:inputText><h:commandButton class="depo-button" value="Güncelle" actionListener="#{adet.adetGuncelle(kuldep.depoIdGetir(kullanici.idGetir()))}" onclick="pencereAc1()"></h:commandButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:outputText class="edittext2" value="Ürün Adı:"></h:outputText><h:inputText class="edittext2" value="#{adet.urunadi}"></h:inputText><h:commandButton class="depo-button" value="Ara" actionListener="#{adet.aramaSec(1)}"></h:commandButton><h:commandButton class="depo-button" value="Tüm Ürünler" actionListener="#{adet.aramaSec(0)}"></h:commandButton>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td>
+                                        <h:commandButton value="Çıkış Yap" class="depo-button" action="#{kullanici.logout()}"></h:commandButton>
+                                        <h:commandButton value="Anasayfa" class="depo-button" action="giris?faces-redirect=true"></h:commandButton>
+                                    </td>
+                                </tr>
+                        </table>
+                        </div>
+                    </h:column>
+                </h:panelGrid>
+            </h:form>
+            <h:form id="form">
+                <h:inputHidden id="silindi" value="Ürün Silindi!!"></h:inputHidden>
+            </h:form>
+            <h:form id="form1">
+                <h:inputHidden id="guncellendi" value="Ürün Güncellendi!!"></h:inputHidden>
+            </h:form>
+        </center>
+        </div>
+    </body>
+</html>

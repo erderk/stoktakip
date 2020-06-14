@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <link rel="stylesheet" type="text/css" href="css/Perfecto.css"></link>
+    <head>
+        <title>Yönetici Paneli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class="limiter">
+        <div class="limiter-admin">
+            <div class="index-baslik">
+                Yönetici Paneli
+            </div>
+            <h:form class="index-bolum">
+                <center>
+                    <table class="anasayfa-table">
+                        <tr>
+                            <td><h:commandButton class="admin-button1" action="depo?faces-redirect=true"></h:commandButton><p class="button-yazi">Depolar</p></td>
+                            <td><h:commandButton class="admin-button2" action="depoekle?faces-redirect=true"></h:commandButton><p class="button-yazi">Depo Ekle</p></td>
+                            <td><h:commandButton class="admin-button3" action="urun?faces-redirect=true"></h:commandButton><p class="button-yazi">Ürünler</p></td>
+                            <td><h:commandButton class="admin-button4" action="urunekle?faces-redirect=true"></h:commandButton><p class="button-yazi">Ürün Ekle</p></td>
+                            <td><h:commandButton class="admin-button5" action="calisanlar?faces-redirect=true"></h:commandButton><p class="button-yazi">Çalışanlar</p></td>
+                            <td><h:commandButton class="admin-button6" action="satisgecmis?faces-redirect=true"></h:commandButton><p class="button-yazi">Depo Satış Geçmişi</p></td>
+                        </tr>
+                    </table>
+                    <h:commandButton class="admin-button7" action="#{admin.logout()}"></h:commandButton><p class="button-yazi">Çıkış Yap</p>
+                </center>
+            </h:form>
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="stylesheet" href="css/Perfecto.css" type="text/css"></link>
+    <head>
+        <title>Yeni Ürün</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script type="text/javascript">
+            function pencereAc(){
+                alert(document.getElementById('form:kaydoldu').value);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="limiter">
+        <center>
+            <p><h1 class="index-baslik">Yeni Gelen Ürün Ekle</h1></p>
+        </center>
+        <center>
+            <h:form>
+                <h:panelGrid columns="2">
+                        <h:column>
+                            <div class="depo-bolum">
+                            <h:outputText class="edittext2" value="Depoda Bulunan Ürünler"></h:outputText>
+                            <h:dataTable class="table" columnClasses="table" headerClass="table" value="#{adet.getAdetListesi(kuldep.depoIdGetir(kullanici.idGetir()))}" var="adetListesi">
+                                <h:column>
+                                    <f:facet name="header">ID</f:facet>
+                                    <h:outputText value="#{adetListesi.urunid}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Ürün Adı</f:facet>
+                                    <h:outputText value="#{adetListesi.urunadi}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Alış Fiyatı(TL)</f:facet>
+                                    <h:outputText value="#{adetListesi.alisfiyat}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Satış Fiyatı(TL)</f:facet>
+                                    <h:outputText value="#{adetListesi.satisfiyat}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Marka</f:facet>
+                                    <h:outputText value="#{adetListesi.marka}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Model</f:facet>
+                                    <h:outputText value="#{adetListesi.model}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Açıklama</f:facet>
+                                    <h:outputText value="#{adetListesi.aciklama}"></h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Adet</f:facet>
+                                    <h:outputText value="#{adetListesi.adet}"></h:outputText>
+                                </h:column>
+                            </h:dataTable>
+                            </div>
+                    </h:column>
+                    <h:column>
+                        <div class="depo-bolum2">
+                            <h:outputText class="edittext2" value="Ürün Listesi"></h:outputText>
+                            <h:selectOneMenu value="#{urun.urunadi}">
+                                <f:selectItems value="#{urun.urunListe}"></f:selectItems>
+                            </h:selectOneMenu><br/><br/>
+                        <table>
+                            <tr>
+                                <td><h:outputText class="edittext2" value="Gelen Ürünün ID'sini Giriniz"></h:outputText><h:inputText class="edittext2" style="width: 20px" value="#{adet.urunid}"></h:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><h:outputText class="edittext2" value="Adet Giriniz"></h:outputText><h:inputText class="edittext2" style="width: 20px" value="#{adet.adet}"></h:inputText></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:commandButton class="depo-button" value="Ekle" actionListener="#{adet.adetEkle(kuldep.depoIdGetir(kullanici.idGetir()))}"></h:commandButton>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h:commandButton value="Çıkış Yap" class="depo-button" action="#{kullanici.logout()}"></h:commandButton>
+                                    <h:commandButton value="Anasayfa" class="depo-button" action="giris?faces-redirect=true"></h:commandButton>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    </h:column>
+                </h:panelGrid>
+            </h:form>
+            <h:form id="form">
+                <h:inputHidden id="urunEklendi" value="Yeni Ürün Eklendi"></h:inputHidden>
+            </h:form>
+        </center>
+        </div>
+    </body>
+</html>
